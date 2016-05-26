@@ -19,12 +19,12 @@ np.random.shuffle(data)
 x_data = data[:, 0:4].astype('f4')
 y_data = one_hot(data[:, 4].astype(int), 3)
 
-#print y_data
+print y_data
 
-#print "\nSome samples..."
-#for i in range(20):
-#    print x_data[i], " -> ", y_data[i]
-#print
+print "\nSome samples..."
+for i in range(20):
+    print x_data[i], " -> ", y_data[i]
+print
 
 x = tf.placeholder("float", [None, 4])
 y_ = tf.placeholder("float", [None, 3])
@@ -64,9 +64,9 @@ for step in xrange(1000):
             errors.append(error)
             print "Iteration #:", step, "Error: ", error
             result = sess.run(y2, feed_dict={x: batch_xs})
-            #for b, r in zip(batch_ys, result):
-            #    print b, "-->", r
-            #print "----------------------------------------------------------------------------------"
+            for b, r in zip(batch_ys, result):
+                print b, "-->", r
+            print "----------------------------------------------------------------------------------"
 
 print "----------------------"
 print "       Finished       "
